@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: 'firedetect'
+    static_configs:
+       - targets: ['172.17.0.1:8001']        # Alternativa Linux
+    scrape_interval: 5s
+    scrape_timeout: 3s
+    metrics_path: /metrics
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+remote_write:
+  - url: https://prometheus-prod-40-prod-sa-east-1.grafana.net/api/prom/push
+    basic_auth:
+      username: 3244360
+      password: glc_eyJvIjoiMTc4MDY3MiIsIm4iOiJzdGFjay0xNjYwMDY4LWFsbG95LXJhc3BiZXJyeS1maXJlLWRldGVjdGlvbi0yIiwiayI6IjgwQnR5OFB4dTh4dTgzSWo1MDFuTDN3SSIsIm0iOnsiciI6InByb2Qtc2EtZWFzdC0xIn19
